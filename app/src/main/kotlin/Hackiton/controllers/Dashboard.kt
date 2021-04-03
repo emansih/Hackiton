@@ -20,15 +20,20 @@ import java.util.*
 class Dashboard: Handler {
 
     override fun handle(ctx: Context) {
-        val HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport()
-        val JSON_FACTORY = JacksonFactory.getDefaultInstance()
-        Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials())
-                .setApplicationName("Hackiethon 2021")
-                .build()
+        // Calendar Permission not granted yet
+        if(ctx.cookie("googleCode") == null){
+            val HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport()
+            val JSON_FACTORY = JacksonFactory.getDefaultInstance()
+            val credential = getCredentials()
+            Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
+                    .setApplicationName("Hackiethon 2021")
+                    .build()
+            ctx.cookie("accessToken", credential.accessToken)
+        }
         ctx.render("/views/dashboard.html")
     }
 
-    fun getCredentials(): Credential {
+    private fun getCredentials(): Credential {
         val input = Authentication::class.java.getResourceAsStream("/credentials.json")
         if(input != null){
             val clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), InputStreamReader(input))
