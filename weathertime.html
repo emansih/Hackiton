@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--importing weather api here-->
+<html lang="en" style="background-color: grey; font-family:Courier, monospace;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+<!--weather section-->
+<section>
+    <h1><strong>Weather</strong></h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        function gettingJSON(){
+            document.write("jquery loaded");
+            $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=2158177&units=metric&appid=2d6333bd76970c4b1d16306b517f334c",function(json){
+                document.write(JSON.stringify(json));
+            });
+        }
+    </script>
+    <button id = "getIt" onclick = "gettingJSON()">Current weather</button>
+    <a href="https://openweathermap.org/">More weather</a></section>
+
+<!--time and city section-->
+<section> 
+
+    <h1><strong>Time</strong></h1>
+    <p id="time"><script>// set date and time
+        var d = new Date();
+        document.getElementById("time").innerHTML = d;
+    </script></p>
+</section>
+</body>
+</html>
