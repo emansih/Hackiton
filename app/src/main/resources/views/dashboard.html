@@ -13,7 +13,7 @@
 
 
 <body>
-	<div class="ClockBar">
+	<div class="TopBar">
 		<h1>
 			<span id="mainClock">##:##</span><span id="AMPM">APM</span> <span id="date">DayName, Month #</span><br>
 			<span id="inspoQuote">"Very Inspirational Quote"</span>
@@ -42,13 +42,13 @@
 		</div>
 
 		<div class="card Weather">
-			<h2> Weather </h2>
-
+			<div id="weatherIcon">icon</div>
+			<h2 id="temps"><span id="weatherTemp">##°c</span> <span id="weatherStatus">light rain</span></h2>
 		</div>
 
 		<div class="card WorldClock">
-			<h2> Clock </h2>
-
+			<h2 id="clockwidgetcontainer"><span id="wordclockwidget">##:##</span> <span id="clockAMPM">APM</span></h2>
+			<p id="clockwidgetCityName"> City Name </p>
 		</div>
 	</div>
 </body>

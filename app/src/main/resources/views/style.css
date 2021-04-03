@@ -5,7 +5,10 @@ body {
 	padding: 20px 50px;
 }
 
-.ClockBar {
+
+/* █████ TOP BAR ███████████████████████████████████ */
+
+.TopBar {
 	/* background-color: rgba(0, 0, 0, 0.1); */
 }
 
@@ -29,47 +32,7 @@ body {
 	color: #999;
 }
 
-.card {
-	/* display: block; */
-	background-color: rgba(0, 0, 0, 0.1);
-	padding: 5px 20px 10px 20px;
-	margin: 5px;
-	border-radius: 20px;
-}
-
-.MainGrid {
-	/* border: 5px solid red; */
-	position: fixed;
-	bottom: 0%;
-	left: 0%;
-	margin: 50px;
-	width: calc(100% - 100px);
-	height: calc(100% - 220px);
-
-	/* GRID */
-	display: grid;
-	grid-template-areas:
-		'event todo weather'
-		'event todo clock';
-	grid-gap: 10px;
-	/* background-color: #2196F3; */
-}
-
-.Events {
-	grid-area: event;
-}
-
-.ToDoList {
-	grid-area: todo;
-}
-
-.Weather {
-	grid-area: weather;
-}
-
-.WorldClock {
-	grid-area: clock;
-}
+/* █████ TOP RIGHT BUTTONS ███████████████████████████████████ */
 
 .topmainbtn {
 	display: block;
@@ -102,3 +65,109 @@ body {
 	box-shadow: 0 2px 5px #F5C78C;
 	text-align: center;
 }
+
+
+/* █████ MAIN GRID ███████████████████████████████████ */
+
+.card {
+	/* display: block; */
+	background-color: rgba(0, 0, 0, 0.1);
+	margin: 5px;
+	border-radius: 20px;
+}
+
+.MainGrid {
+	/* border: 5px solid red; */
+	position: fixed;
+	bottom: 0%;
+	left: 0%;
+	margin: 50px;
+	width: calc(100% - 100px);
+	height: calc(100% - 220px);
+
+	/* GRID */
+	display: grid;
+	grid-template-areas:
+		'event todo weather'
+		'event todo clock';
+	grid-gap: 10px;
+	/* background-color: #2196F3; */
+}
+
+.Events {
+	grid-area: event;
+	padding: 5px 20px 10px 20px;
+}
+
+.ToDoList {
+	grid-area: todo;
+	padding: 5px 20px 10px 20px;
+}
+
+.Weather {
+	grid-area: weather;
+	padding: 30px;
+}
+
+.WorldClock {
+	grid-area: clock;
+	padding: 30px;
+}
+
+/* █████ WEATHER CONTENTS ███████████████████████████████████ */
+#weatherIcon {
+	border: 5px solid red;
+	width: 70px;
+	height: 70px;
+}
+
+#temps {
+	border: 5px solid red;
+
+	width: 100%;
+	background-color: white;
+}
+
+#weatherTemp {
+	border: 5px solid green;
+
+	text-align: left;
+	vertical-align: bottom;
+	font-size: 40px;
+}
+
+#weatherStatus {
+	border: 5px solid green;
+
+	float: right;
+	text-align: right;
+	vertical-align: bottom;
+	font-size: 20px;
+}
+
+/* █████ CLOCK CONTENTS ███████████████████████████████████ */
+#clockwidgetcontainer {
+	border: 5px solid red;
+	text-align: center;
+}
+
+#wordclockwidget {
+	font-size: 40px;
+	text-align: center;
+}
+
+#clockAMPM {
+	font-size: 15px;
+	color: #999;
+	text-align: center;
+}
+
+#clockwidgetCityName {
+	border: 5px solid red;
+	text-align: center;
+}
+
+/* █████ TO-DO CONTENTS ███████████████████████████████████ */
+
+
+/* █████ EVENTS CONTENTS ███████████████████████████████████ */
