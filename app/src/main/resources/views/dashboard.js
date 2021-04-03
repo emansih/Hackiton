@@ -43,7 +43,7 @@ function worldclock () {
   var currentTime = new Date ( );
 
 	var cityNameLabel = "Knowhere"  //EDIT THIS TO SET CITY MESSAGE
-	var offsetHours = 3; //EDIT THIS TO SET TIME OFFSET
+	var offsetHours = -3; //EDIT THIS TO SET TIME OFFSET
 	var offsetMins = 0;	//EDIT THIS TO SET TIME OFFSET
 
   var currentHours = currentTime.getHours ( );
@@ -67,9 +67,16 @@ function worldclock () {
 
   // Compose the string for display
 	var timeOutput = currentHours + ":" + currentMinutes;
-	var ampmOutput =  ":" + currentSeconds + " " + timeOfDay;
-	var dateOutput = "Date Not yet Coded!"
-	var cityNameOutput =  cityNameLabel + " (+" + offsetHours + " hrs)"
+	var ampmOutput = ":" + currentSeconds + " " + timeOfDay;
+	var dateOutput = "Date Not yet Coded!";
+
+	var offsetOutput = offsetHours;
+
+	if (offsetHours >= 0) {
+		offsetOutput = "+" + offsetOutput;
+	}
+
+	var cityNameOutput =  cityNameLabel + " (" + offsetOutput + " hrs)"
 
   // Update the time display
   document.getElementById("worldclockwidget").firstChild.nodeValue = timeOutput;
