@@ -29,11 +29,21 @@
 	</div>
 
 	<div class="MainGrid">
+
+		 <!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
 			<h2> Events </h2>
-
 			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
+
+			<div class="card-body">
+				<ul th:each="calendarEntries: ${calendarEntries}" class="list-unstyled mt-3 mb-4">
+					<li th:text="${calendarEntries.startDateTime} + '  ' +  ${calendarEntries.description}"></li>
+				</ul>
+			</div>
+
 		</div>
+
+		<!-- █████ TO-DO ███████████████████████████████████ -->
 
 		<div class="card ToDoList">
 			<h2> Goals For Today </h2>
@@ -41,6 +51,7 @@
 			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
 		</div>
 
+		<!-- █████ WEATHER ███████████████████████████████████ -->
 		<div class="card Weather">
 			<div id="weatherIcon">icon</div>
 			<h2 id="temps"><span id="weatherTemp">##°c</span> <span id="weatherStatus">light rain</span></h2>
