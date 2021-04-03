@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+body {
+	font-family: 'Kiwi Maru', serif;
+	padding: 20px 50px;
+}
+
+.ClockBar {
+	/* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+#mainClock {
+	/* font-size: 15px; */
+	color: #000;
+}
+
+#AMPM {
+	font-size: 15px;
+	color: #000;
+}
+
+#date {
+	/* font-size: 15px; */
+	color: #999;
+}
+
+#inspoQuote {
+	font-size: 20px;
+	color: #999;
+}
+
+.card {
+	/* display: block; */
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 5px 20px 10px 20px;
+	margin: 5px;
+	border-radius: 20px;
+}
+
+.MainGrid {
+	/* border: 5px solid red; */
+	position: fixed;
+	bottom: 0%;
+	left: 0%;
+	margin: 50px;
+	width: calc(100% - 100px);
+	height: calc(100% - 220px);
+
+	/* GRID */
+	display: grid;
+	grid-template-areas:
+		'event todo weather'
+		'event todo clock';
+	grid-gap: 10px;
+	/* background-color: #2196F3; */
+}
+
+.Events {
+	grid-area: event;
+}
+
+.ToDoList {
+	grid-area: todo;
+}
+
+.Weather {
+	grid-area: weather;
+}
+
+.WorldClock {
+	grid-area: clock;
+}
+
+.topmainbtn {
+	display: block;
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	top: 50px;
+	right: 50px;
+	margin: 10px;
+
+	/* border: 2px solid white; */
+	border-radius: 50%;
+
+	overflow: hidden;
+}
+
+.Settings {
+
+	color: #707070;
+	background-color: #E6E6E6;
+	box-shadow: 0 2px 5px #C7C7C7;
+	text-align: center;
+}
+
+.FocusTimer {
+	right: 160px;
+
+	color: #DEA200;
+	background-color: #FFE8A7;
+	box-shadow: 0 2px 5px #F5C78C;
+	text-align: center;
+}

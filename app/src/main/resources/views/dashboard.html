@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="./style.css">
+
 </head>
+
+
 <body>
-Welcome to Hackiethon 2021!
+	<div class="ClockBar">
+		<h1>
+			<span id="mainClock">##:##</span><span id="AMPM">APM</span> <span id="date">DayName, Month #</span><br>
+			<span id="inspoQuote">"Very Inspirational Quote"</span>
+		</h1>
+
+		<div class="topmainbtn Settings">
+			<h2> Settings </h2>
+		</div>
+
+		<div class="topmainbtn FocusTimer">
+			<h2> Timer </h2>
+		</div>
+	</div>
+
+	<div class="MainGrid">
+		<div class="card Events">
+			<h2> Events </h2>
+
+			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
+		</div>
+
+		<div class="card ToDoList">
+			<h2> Goals For Today </h2>
+
+			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
+		</div>
+
+		<div class="card Weather">
+			<h2> Weather </h2>
+
+		</div>
+
+		<div class="card WorldClock">
+			<h2> Clock </h2>
+
+		</div>
+	</div>
 </body>
 </html>

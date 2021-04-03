@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.item1 { grid-area: event; }
+.item2 { grid-area: todo; }
+.item3 { grid-area: weather; }
+.item4 { grid-area: clock; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'event todo weather'
+    'event todo clock';
+  grid-gap: 10px;
+  /* background-color: #2196F3; */
+  padding: 10px;
+	height: 100%;
+}
+
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* text-align: center;
+  padding: 20px 0;
+  font-size: 30px; */
+}
+</style>
+</head>
+<body>
+
+<h1>Grid Layout</h1>
+
+<p>This grid layout contains six columns and three rows:</p>
+
+<div class="grid-container">
+  <div class="item1">Thing 1</div>
+  <div class="item2">Thing 2</div>
+  <div class="item3">Thing 3</div>
+  <div class="item4">Thing 4</div>
+</div>
+
+</body>
+</html>
