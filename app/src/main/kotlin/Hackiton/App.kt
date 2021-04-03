@@ -12,6 +12,7 @@ object App {
         val app = Javalin.create { obj: JavalinConfig ->
             obj.enableDevLogging()
             obj.addStaticFiles("/scripts", Location.CLASSPATH)
+            obj.addStaticFiles("/css", Location.CLASSPATH)
         }.start(8080)
         configureRoutes(app)
     }
