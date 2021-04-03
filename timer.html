@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<script>
+<p id="timer"></p>
+// taken from w3schools, set the date and time we're counting down to
+var countDownDate = new Date("date").getTime();
+var x setInterval(function(){
+    var now = new Date().getTime();
+    //shows the difference between now and when the task finishes
+    var distance = countDownDate - now;
+    //time calculations
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    //shows result in elemtn that mentions timer id
+    document.getElementById("timer").innerHTML = hours + "h" + minutes + "m" + seconds + "s";
+
+    //alerts user that count down is finished
+    if (distance <= 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Time's up!";
+    }
+}, 1000)
+</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+    <!--title-->
+    <h1>Let's work on + userinput + now!</h1>
+<!--timer section-->
+<section>
+    <h2>user task heading</h2>
+    <p id="timer">hours and minutes</p>
+    <!--headers are h1 to h6-->
+    <img width="200" height="200" src="put timer button here" alt="Timer button">
+    <!-- set button dimensions-->
+    <p>user description</p>
+    </section>
+</html>
