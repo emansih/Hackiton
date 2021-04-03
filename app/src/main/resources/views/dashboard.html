@@ -7,15 +7,16 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="dashboard.js"></script>
 
 </head>
 
 
-<body>
+<body onload="updateClocks();"> <!-- Update Clock -->
 	<div class="TopBar">
 		<h1>
-			<span id="mainClock">##:##</span><span id="AMPM">APM</span> <span id="date">DayName, Month #</span><br>
+			<span id="mainClock">--:--</span><span id="AMPM">:-- --</span> <span id="date">DayName, Month #</span><br>
 			<span id="inspoQuote">"Very Inspirational Quote"</span>
 		</h1>
 
@@ -49,6 +50,29 @@
 			<h2> Goals For Today </h2>
 
 			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
+
+			<table class="table-unstyled">
+				<tr>
+					<td><input type="checkbox" id="task1" name="task1"></td>
+								<td><input type="text"></td>
+						</tr>
+						<tr>
+					<td><input type="checkbox" id="task2" name="task2"></td>
+								<td><input type="text"></td>
+						</tr>
+						<tr>
+					<td><input type="checkbox" id="task3" name="task3"></td>
+								<td><input type="text"></td>
+						</tr>
+						<tr>
+					<td><input type="checkbox" id="task4" name="task4"></td>
+								<td><input type="text"></td>
+						</tr>
+						<tr>
+					<td><input type="checkbox" id="task5" name="task5"></td>
+								<td><input type="text"></td>
+						</tr>
+			</table>
 		</div>
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->
@@ -58,7 +82,7 @@
 		</div>
 
 		<div class="card WorldClock">
-			<h2 id="clockwidgetcontainer"><span id="wordclockwidget">##:##</span> <span id="clockAMPM">APM</span></h2>
+			<h2 id="clockwidgetcontainer"><span id="worldclockwidget">##:##</span> <span id="worldclockAMPM">APM</span></h2>
 			<p id="clockwidgetCityName"> City Name </p>
 		</div>
 	</div>
