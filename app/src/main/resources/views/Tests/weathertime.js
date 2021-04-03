@@ -27,6 +27,7 @@ var showWeather = function(data) {
 
 $(document).ready(function() {
     $("#btn").click(function() {
+			console.log("button pressed")
         $.getJSON('http://ip-api.com/json', getWeather)
     })
 })
