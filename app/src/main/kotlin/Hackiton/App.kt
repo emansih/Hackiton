@@ -32,5 +32,5 @@ fun main(args: Array<String>){
      app.get("/todo", TodoController())
      app.post("/storeGoals", StoreGoal())
      app.get("/marktodo/:id", Marktodo())
+		 app.get("/timer", Timer())
  }
-
