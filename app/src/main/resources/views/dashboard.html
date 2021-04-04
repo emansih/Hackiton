@@ -17,8 +17,8 @@
 	<!-- █████ TOP BAR █████████████████████████████████████████ -->
 	<div class="TopBar">
 		<h1>
-			<span id="mainClock">9:13</span><span id="AMPM">:57 PM</span> <span id="date">4 APRIL 2021</span><br>
-			<span id="inspoQuote">Good things happen to those who hustle</span>
+			<span id="mainClock">--:--</span><span id="AMPM">:-- --</span> <span id="date">- ---- ----</span><br>
+			<span id="inspoQuote">A very inspirational quote is coming...</span>
 		</h1>
 
 		<!-- <div class="topmainbtn Settings">
@@ -35,7 +35,7 @@
 		<!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
 			<h2> Events </h2>
-			
+
 			<button onclick="location.href='/addEvent';" type="button" class="moduleBtn">+</button>
 
 			<div class="card-body">
@@ -66,13 +66,13 @@
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->
 		<div class="card Weather">
-			<img id="weatherIcon" src="https://openweathermap.org/img/w/04n.png">
-			<h2 id="temps"><span id="weatherTemp">17.32 °c</span> <span id="weatherStatus">Clouds</span></h2>
+			<img id="weatherIcon" th:src="${weatherIcon}" />
+			<h2 id="temps"><span id="weatherTemp" th:text="${temp}"></span> <span th:text="${weatherStatus}" id="weatherStatus"></span></h2>
 		</div>
 
 		<!-- █████ WORLD CLOCK ███████████████████████████████ -->
 		<div class="card WorldClock">
-			<h2 id="clockwidgetcontainer"><span id="worldclockwidget">07:13:57 PM</span></h2>
+			<h2 id="clockwidgetcontainer"><span id="worldclockwidget">--:--:-- --</span></h2>
 			<p id="clockwidgetCityName">Asia/Taipei</p>
 			<select id="timezone" onchange="changeTimeZone()">
 				<option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
