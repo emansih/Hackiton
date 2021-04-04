@@ -38,7 +38,9 @@
 			<button onclick="location.href='/addEvent';" type="button" class="moduleBtn">+</button>
 
 			<div class="card-body">
-
+				<ul th:each="calendarEntries: ${calendarEntries}" class="list-group">
+					<li th:text="${calendarEntries.startDateTime} + '  ' +  ${calendarEntries.description}"></li>
+				</ul>
 			</div>
 
 		</div>
@@ -50,7 +52,16 @@
 
 			<button onclick="location.href='/todo';" type="button" class="moduleBtn">+</button>
 
-
+			<table class="table-unstyled" th:each="todoEntries: ${todoEntries}">
+				<tr>
+					<td>
+						<label class="container">	<span th:text="${todoEntries.todoDescription}"></span>
+							<input type="checkbox" th:id="${todoEntries.todoItemId}" onclick="checkTodo()" th:value="${todoEntries.todoItemId}" th:name="${todoEntries.todoItemId}">
+							<span class="checkmark"></span>
+						</label>
+					</td>
+				</tr>
+			</table>
 		</div>
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->
