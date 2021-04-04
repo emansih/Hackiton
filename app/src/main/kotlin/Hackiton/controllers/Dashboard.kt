@@ -37,6 +37,7 @@ class Dashboard: Handler {
                 }
             }
         }
+        todoArray.clear()
         db.collection("todo").listDocuments().forEach {  docRef ->
             val todoItems = docRef.get().get().toObject(TodoItems::class.java)
             if(todoItems?.userId != null && todoItems.userId.contentEquals(userId)){
