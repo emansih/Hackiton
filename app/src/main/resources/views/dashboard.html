@@ -22,11 +22,11 @@
 		</h1>
 
 		<div class="topmainbtn Settings">
-			<h2> Settings </h2>
+			<h2>  </h2>
 		</div>
 
 		<div class="topmainbtn FocusTimer">
-			<h2> Timer </h2>
+			<h2>  </h2>
 		</div>
 	</div>
 
@@ -35,7 +35,7 @@
 		<!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
 			<h2> Events </h2>
-			<button onclick="location.href='/addEvent';" type="button" class="btn btn-primary">Add</button>
+			<button onclick="location.href='/addEvent';" type="button" class="moduleBtn">+</button>
 
 			<div class="card-body">
 				<ul th:each="calendarEntries: ${calendarEntries}" class="list-group">
@@ -50,8 +50,7 @@
 		<div class="card ToDoList">
 			<h2> Goals For Today </h2>
 
-			<button onclick="location.href='/todo';" type="button" class="btn btn-primary">Add</button>
-
+			<button onclick="location.href='/todo';" type="button" class="moduleBtn">+</button>
 
 			<table class="table-unstyled" th:each="todoEntries: ${todoEntries}">
 				<tr>
