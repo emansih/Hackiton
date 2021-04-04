@@ -16,6 +16,7 @@ class Dashboard: Handler {
     override fun handle(ctx: Context) {
         val userId = ctx.cookie("userId") ?: ""
         val db = FirestoreClient.getFirestore()
+        calendarArray.clear()
         db.collection("calendar").listDocuments().forEach {  docRef ->
             val calendar = docRef.get().get().toObject(CalendarItems::class.java)
             if(calendar?.userId != null && calendar.userId.contentEquals(userId)){
@@ -28,9 +29,13 @@ class Dashboard: Handler {
                 }
             }
         }
-        val hashMap: HashMap<String, ArrayList<CalendarItems>> = HashMap()
+        val rnds = (1..10).random()
+        val hashMap: HashMap<String, Any> = HashMap()
+        
+        db.collection("quotes").listDocuments().forEach {  docRef ->
+            hashMap["quotes"] = docRef.get().get().get(rnds.toString()) as String
+        }
         hashMap["calendarEntries"] = calendarArray
-        println("array: " + calendarArray)
         ctx.render("/views/dashboard.html", hashMap)
     }
 

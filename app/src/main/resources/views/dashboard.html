@@ -7,8 +7,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="../css/dashboard.css">
-	<script src="../scripts/dashboard.js"></script>
+	<link rel="stylesheet" href="/dashboard.css">
+	<script src="/dashboard.js"></script>
 
 </head>
 
@@ -17,7 +17,7 @@
 	<div class="TopBar">
 		<h1>
 			<span id="mainClock">--:--</span><span id="AMPM">:-- --</span> <span id="date">DayName, Month #</span><br>
-			<span id="inspoQuote">"Very Inspirational Quote"</span>
+			<span id="inspoQuote" th:text="${quotes}"></span>
 		</h1>
 
 		<div class="topmainbtn Settings">
