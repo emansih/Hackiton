@@ -63,3 +63,10 @@ function changeTimeZone(){
 	document.getElementById("clockwidgetCityName").innerHTML = timeZone
 	setCookie("timeZone", timeZone)
 }
+
+function cookieTimeZone(){
+	if(getCookie("timeZone") != null){
+		document.getElementById("clockwidgetCityName").innerHTML = getCookie("timeZone")
+		document.getElementById("timezone").value = getCookie("timeZone")
+	}
+}
