@@ -74,6 +74,11 @@
 		opacity: 50%;
 	}
 
+	#reset {
+		display: none;
+	}
+
+
 </style>
 
 </head>
@@ -111,11 +116,16 @@
 
 	<input id="inputdate" type="text" value="Jan 1, 2021 08:30:00"></input>
 	<button id="start" onclick="timer();">Start</button>
+	<button id="reset" onclick="window.location.reload();">Reset</button>
 
 
 	<script>
 
 	function timer() {
+
+		document.getElementById("reset").style.display = "block"
+		document.getElementById("start").style.display = "none"
+		document.getElementById("inputdate").style.display = "none"
 
 		// var inputmins = document.getElementById("inputmins").value;
 		// var inputhours = document.getElementById("inputhours").value;
