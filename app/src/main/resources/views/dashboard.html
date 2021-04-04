@@ -51,30 +51,13 @@
 		<div class="card ToDoList">
 			<h2> Goals For Today </h2>
 
-			<button id="btnaddevents" class="smallbtn" onclick="//CALL JS FUNCTION"> add </button>
+			<button onclick="location.href='/todo';" type="button" class="btn btn-primary">Add</button>
 
-			<table class="table-unstyled">
-				<tr>
-					<td><input type="checkbox" id="task1" name="task1"></td>
-								<td><input type="text"></td>
-						</tr>
-						<tr>
-					<td><input type="checkbox" id="task2" name="task2"></td>
-								<td><input type="text"></td>
-						</tr>
-						<tr>
-					<td><input type="checkbox" id="task3" name="task3"></td>
-								<td><input type="text"></td>
-						</tr>
-						<tr>
-					<td><input type="checkbox" id="task4" name="task4"></td>
-								<td><input type="text"></td>
-						</tr>
-						<tr>
-					<td><input type="checkbox" id="task5" name="task5"></td>
-								<td><input type="text"></td>
-						</tr>
-			</table>
+			<div class="card-body">
+				<ul th:each="todoEntries: ${todoEntries}" class="list-group">
+					<li th:text="${todoEntries.todoDescription}"></li>
+				</ul>
+			</div>
 		</div>
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->

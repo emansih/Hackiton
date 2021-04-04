@@ -1,6 +1,7 @@
 package Hackiton.controllers
 
 import Hackiton.models.CalendarItems
+import Hackiton.models.TodoItems
 import Hackiton.service.WeatherService
 import com.google.firebase.cloud.FirestoreClient
 import io.javalin.http.Context
@@ -17,6 +18,7 @@ import java.time.ZoneId
 class Dashboard: Handler {
 
     private val calendarArray = arrayListOf<CalendarItems>()
+    private val todoArray = arrayListOf<TodoItems>()
     private val hashMap: HashMap<String, Any> = HashMap()
 
     override fun handle(ctx: Context) {
@@ -35,6 +37,18 @@ class Dashboard: Handler {
                 }
             }
         }
+        db.collection("todo").listDocuments().forEach {  docRef ->
+            val todoItems = docRef.get().get().toObject(TodoItems::class.java)
+            if(todoItems?.userId != null && todoItems.userId.contentEquals(userId)){
+                if(!todoItems.isDone){
+                    todoArray.add(TodoItems(
+                            userId, todoItems.todoItemId, todoItems.todoDescription,
+                            todoItems.todoDate, todoItems.isDone
+                    ))
+                }
+
+            }
+        }
         val rnds = (1..10).random()
         val localDate = LocalDate.now(ZoneId.of("Australia/Melbourne"))
         val parsedDate = localDate.dayOfMonth.toString() + " " + localDate.month + " " + localDate.year
@@ -43,6 +57,7 @@ class Dashboard: Handler {
             hashMap["quotes"] = docRef.get().get().get(rnds.toString()) as String
         }
         hashMap["calendarEntries"] = calendarArray
+        hashMap["todoEntries"] = todoArray
         runBlocking {
             getWeatherData()
         }

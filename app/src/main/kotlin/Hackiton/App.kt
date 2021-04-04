@@ -1,9 +1,6 @@
 package Hackiton
 
-import Hackiton.controllers.AddEvent
-import Hackiton.controllers.Authentication
-import Hackiton.controllers.Dashboard
-import Hackiton.controllers.StoreEvent
+import Hackiton.controllers.*
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
@@ -32,5 +29,7 @@ fun main(args: Array<String>){
      app.get("/dashboard", Dashboard())
      app.get("/addEvent", AddEvent())
      app.post("/storeEvent", StoreEvent())
+     app.get("/todo", TodoController())
+     app.post("/storeGoals", StoreGoal())
  }
 
