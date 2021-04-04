@@ -18,12 +18,19 @@
             <div class="col-md-6">
                 <form id="createEventForm" action="/storeEvent" method="post">
                     <div class="form-group">
-                        <label for="startTime">
-                            <small class="text-muted">Start Time</small>
+                        <label for="startDate">
+                            <small class="text-muted">Start Date</small>
                         </label>
-                        <input type="datetime-local" class="form-control" id="startTime" name="startTime" required/>
+                        <input type="date" class="form-control" id="startDate" name="startDate" required/>
                     </div>
 
+                    <br>
+                    <div class="form-group">
+                        <label for="startTime">
+                            <small class="text-muted">Start Date</small>
+                        </label>
+                        <input type="time" class="form-control" id="startTime" name="startTime" required/>
+                    </div>
                     <br>
 
                     <div class="form-group">
