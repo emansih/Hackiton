@@ -1,44 +1,263 @@
 <!DOCTYPE html>
-<script>
-<p id="timer"></p>
-// taken from w3schools, set the date and time we're counting down to
-var countDownDate = new Date("date").getTime();
-var x setInterval(function(){
-    var now = new Date().getTime();
-    //shows the difference between now and when the task finishes
-    var distance = countDownDate - now;
-    //time calculations
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    //shows result in elemtn that mentions timer id
-    document.getElementById("timer").innerHTML = hours + "h" + minutes + "m" + seconds + "s";
-
-    //alerts user that count down is finished
-    if (distance <= 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "Time's up!";
-    }
-}, 1000)
-</script>
 <html lang="en">
 <head>
+    <script src=".\progressBar.js">
+        const progressBar = new ProgressBar.Circle('#pomodoro-timer', {
+    strokeWidth: 2,
+    text: {
+      value: '25:00',
+    },
+    trailColor: '#f4f4f4',
+  })
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer</title>
+<script>//pomodoro timer
+const pomodoroTimer = document.querySelector("#pomodoro-timer")
+const startButton = document.querySelector("#pomodoro-start")
+const stopButton = document.querySelector("#pomodoro-stop")
+
+startButton.addEventListener('click', () => {
+    toggleClock()
+})
+
+stopButton.addEventListener('click', () => {
+    toggleClock(true)
+})
+
+let isClockRunning = false
+let workSessionDuration = 1500 //this is 25 minutes
+let currentTimeLeftInSession = 1500
+let breakSessionDuration = 300 //break is 5 minutes
+let type = 'Study'
+let timeSpentInCurrentSession = 0
+let currentTaskLabel = document.querySelector('#pomodoro-clock-task')
+let updatedWorkSessionDuration 
+let updatedBreakSessionDuration
+let isClockStopped = true
+
+let workDurationInput = document.querySelector('#input-work-duration')
+let breakDurationInput = document.querySelector('#input-break-duration')
+
+workDurationInput.value = '25'
+workDurationInput.value = '5'
+
+//updates work duration
+workDurationInput.addEventListener('input', () => {
+    updatedWorkSessionDuration = minuteToSeconds(workDurationInput.value)
+})
+
+//updates break duration
+breakDurationInput.addEventListener('input', () => {
+    updatedBreakSessionDuration = minuteToSeconds(breakDurationInput.value)
+})
+const minuteToSeconds = (mins) => {
+    return mins * 60
+}
+
+//updated timer function
+const setUpdatedTimers = () => {
+  if (type === 'Work') {
+    currentTimeLeftInSession = updatedWorkSessionDuration
+      ? updatedWorkSessionDuration
+      : workSessionDuration
+    workSessionDuration = currentTimeLeftInSession
+  } else {
+    currentTimeLeftInSession = updatedBreakSessionDuration
+      ? updatedBreakSessionDuration
+      : breakSessionDuration
+    breakSessionDuration = currentTimeLeftInSession
+  }
+}
+//toggle clock function
+const toggleClock = (reset) => {
+    togglePlayPauseIcon(reset)
+    if(reset) {
+        stopClock()
+    } else {
+        console.log(isClockStopped)
+        if (isClockStopped) {
+        setUpdatedTimers()
+        isClockStopped = false
+        }
+      if (isClockRunning === true) {
+            //pause
+            clearInterval(clockTimer)
+            isClockRunning = false
+        } else {
+            //starts
+            isClockRunning = true
+            clockTimer = setInterval(() => {
+                stepDown()
+                displayCurrentTimeLeftInSession()
+            }, 1000) //decreases time left by 1 per second
+        }
+        showStopIcon()
+    }
+}
+const togglePlayPauseIcon = (reset) => {
+  togglePlayPauseIcon(reset);
+  const playIcon = document.querySelector('#play-icon')
+  const pauseIcon = document.querySelector('#pause-icon')
+  if (reset) {
+    // when resetting -> always revert to play icon
+    if (playIcon.classList.contains('hidden')) {
+      playIcon.classList.remove('hidden')
+    }
+    if (!pauseIcon.classList.contains('hidden')) {
+      pauseIcon.classList.add('hidden')
+    }
+  } else {
+    playIcon.classList.toggle('hidden')
+    pauseIcon.classList.toggle('hidden')
+  }
+}
+const calculateSessionProgress = () => {
+  // calculate the completion rate of this session
+  const sessionDuration =
+    type === 'Work' ? workSessionDuration : breakSessionDuration
+  return (timeSpentInCurrentSession / sessionDuration) * 10
+}
+//stop clock function
+const stopClock = () => {
+    setUpdatedTimers()
+    displaySessionLog(type)
+    clearInterval(clockTimer)
+    isClockStopped = true
+    isClockRunning = false
+    currentTimeLeftInSession = workSessionDuration
+    displayCurrentTimeLeftInSession()
+    type = 'Work'
+    timeSpentInCurrentSession = 0
+}
+const showStopIcon = () => {
+  const stopButton = document.querySelector('#pomodoro-stop')
+  stopButton.classList.remove('hidden')
+}
+//remaining time function
+const displayCurrentTimeLeftInSession = () => {
+    const secondsLeft = currentTimeLeftInSession
+    let result = ''
+    const seconds = secondsLeft % 60
+    const minutes = parseInt(secondsLeft/60) % 60
+    let hours = parseInt(secondsLeft/3600)
+    function addLeadingZeroes(time) {
+        return time < 10 ? `0${time}` : time
+    }
+    if (hours>0) result += `${hours}:`
+    result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`
+    progressBar.text.innerText = result.toString()
+}
+//stepDown function
+const stepDown = () => {
+    if (currentTimeLeftInSession > 0) {
+        currentTimeLeftInSession--
+        timeSpentInCurrentSession++
+    } else if (currentTimeLeftInSession === 0) {
+        timeSpentInCurrentSession = 0
+        if(type === 'Work') {
+            currentTimeLeftInSession = breakSessionDuration;
+            displaySessionLog('Work');
+            type = 'Break';
+            setUpdatedTimers();
+            currentTaskLabel.value = 'Break';
+            currentTaskLabel.disabled = true;
+        } else {
+            currentTimeLeftInSession = workSessionDuration;
+            type = 'Work';
+            setUpdatedTimers();
+            if (currentTaskLabel.value === 'Break') {
+                currentTaskLabel.value = workSessionLabel;
+            }
+            currentTaskLabel.disabled = false;
+            displaySessionLog('Break')
+        }
+    }
+    displayCurrentTimeLeftInSession()
+    clockTimer = setInterval(() => {
+    stepDown()
+    displayCurrentTimeLeftInSession()
+    progressBar.set(calculateSessionProgress())
+}, 1000)
+}
+
+const displaySessionLog = (type) => {
+    const sessionsList = document.querySelector('#pomodoro-tasks')
+    const li = document.createElement('li')
+    if (type === 'Work') {
+        sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : 'Work'
+        workSessionLabel = sessionLabel
+    } else {
+        sessionLabel = 'Break'
+    }
+    let elapsedTime = parseInt(timeSpentInCurrentSession / 60)
+    elapsedTime = elapsedTime > 0 ? elapsedTime : '< 1'
+
+    const text = document.createTextNode(`${sessionLabel} : ${elapsedTime} min`)
+    li.appendChild(text)
+    sessionsList.appendChild(li)
+}
+
+</script> 
+<style>.hidden {
+    display: none;
+  }</style>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+  rel="stylesheet"
+/>
 </head>
-<body>
+<body style="font-family:Courier, monospace;">
     <!--title-->
-    <h1>Let's work on + userinput + now!</h1>
-<!--timer section-->
-<section>
-    <h2>user task heading</h2>
-    <p id="timer">hours and minutes</p>
-    <!--headers are h1 to h6-->
-    <img width="200" height="200" src="put timer button here" alt="Timer button">
-    <!-- set button dimensions-->
-    <p>user description</p>
-    </section>
+    <title>Pomodoro Timer</title>
+    <h1>Let's work now!</h1>
+    <!--play and pause the timer-->
+    <div id="pomodoro-container">
+        <div id="pomodoro-clock">
+            <div id="pomodoro-timer"></div>
+            <div>
+                <input
+                    type="text"
+                    id="pomodoro-clock-task"
+                    placeholder="Enter your task"
+                />
+            </div>
+            <div id="pomodoro-actions">
+                
+                <button id="pomodoro-start">
+                    <i class="fas fa-play" id="play-icon"></i>
+                    <i class="fas fa-pause hidden" id="pause-icon"></i>
+                  </button>
+                  <button id="pomodoro-stop" class="hidden">
+                    <i class="fas fa-stop"></i>
+                  </button>
+            </div>
+            <div id="pomodoro-clock-title">
+                <span>
+                  Changes here will affect the start of the next work or break sesh
+                </span>
+            </div>
+            <div id="pomodoro-actions">
+                <div class="pomodoro-input">
+                    <label>Work Duration</label>
+                    <input name="input-work-duration" id="input-work-duration" type="number" />
+                   
+                </div>
+                <div class="pomodoro-input">
+                    <label>Break Duration</label>
+                    <input name="input-break-duration" id="input-break-duration" type="number" />
+
+                </div>
+                
+            </div>
+
+        </div>
+        <div id="pomodoro-info">
+            <h3>Your Tasks</h3>
+            <ul id="pomodoro-tasks"></ul>
+        </div>
+    </div>
+</div>
+</div>  
 </html>
