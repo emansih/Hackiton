@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8">
 	<title>Dashboard</title>
@@ -36,7 +36,7 @@
 		 <!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
 			<h2> Events </h2>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>
+			<button onclick="location.href='/addEvent';" type="button" class="btn btn-primary">Add</button>
 
 			<div class="card-body">
 				<ul th:each="calendarEntries: ${calendarEntries}" class="list-group">
@@ -88,5 +88,6 @@
 			<p id="clockwidgetCityName"> --------- </p>
 		</div>
 	</div>
+<hr />
 </body>
 </html>

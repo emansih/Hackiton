@@ -64,12 +64,4 @@ class Dashboard: Handler {
             hashMap["weatherIcon"] = "https://openweathermap.org/img/w/" + body.weather[0].icon + ".png"
         }
     }
-
-    // TO Add
-    /*
-      val db = FirestoreClient.getFirestore()
-        val docRef = db.collection("calendar")
-        val calendarRef = docRef.document()
-        calendarRef.create(CalendarItems(userId, calendarRef.get().get().id,"This is another test", "1617495192"))
-     */
 }
