@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src=".\progressBar.js">
-
-	</script>
+	<!-- <script src=".\progressBar.js"></script> -->
 
 	<link rel="stylesheet" href="/dashboard.css">
 	<script src="/dashboard.js"></script>
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
@@ -22,14 +22,60 @@
 		margin: 110px 50px 0px 50px;
 		background-color: rgba(0, 0, 0, 0.1);
 		border-radius: 30px;
-		padding: 30px;
+		padding: 3px 30px 30px 30px;
 	}
 
+	#inputdate {
+		top: 0;
+		left: 0;
+		height: 40px;
+		width: calc(100% - 40px);
+		border-radius: 30px;
+		border: none;
+		background-color: rgba(255,255,255,1);
+		padding: 3px 20px 3px 20px;
+		box-shadow: 0 0px 0px rgba(0,0,0,0.0);
+		margin-bottom: 15px;
+
+		font-family: 'Kiwi Maru', serif;
+		font-size: 20px;
+
+		transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+		outline: none;
+	}
+
+	#inputdate:hover {
+		background-color: rgba(255,255,255,1);
+	}
+	#inputdate:focus {
+		background-color: rgba(255,255,255,1);
+		box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	}
+
+	button {
+		width: 200px;
+		height: 50px;
+		background-color: white;
+		border: none;
+		border-radius: 30px;
+		font-family: 'Kiwi Maru', serif;
+		font-size: 20px;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+		transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+		outline: none;
+	}
+	button:hover {
+		transform: scale(1.02);
+	}
+	button:active {
+		transform: scale(0.98);
+		opacity: 50%;
+	}
 
 </style>
 
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
 </head>
 
 
@@ -63,8 +109,8 @@
 	<!-- <input id="inputhours" type="number">Hours</input> -->
 	<!-- <input id="inputmins" type="number">Mins</input> -->
 
-	<input id="inputdate" type="text" value="Apr 4, 2023 15:37:00"></input>
-	<button onclick="timer();">Start</button>
+	<input id="inputdate" type="text" value="Jan 1, 2021 08:30:00"></input>
+	<button id="start" onclick="timer();">Start</button>
 
 
 	<script>

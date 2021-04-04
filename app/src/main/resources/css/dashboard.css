@@ -234,6 +234,7 @@ h1 {
 	/* background-color: white; */
 	border-radius: 50%;
 	border: 3px dotted white;
+	outline: none;
 }
 
 #temps {
