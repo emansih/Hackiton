@@ -48,6 +48,10 @@ body {
 	overflow: hidden;
 }
 
+#timezone {
+	border: 3px solid red;
+}
+
 
 /* █████ TOP BAR ███████████████████████████████████ */
 

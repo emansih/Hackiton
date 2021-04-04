@@ -35,6 +35,7 @@
 		<!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
 			<h2> Events </h2>
+			
 			<button onclick="location.href='/addEvent';" type="button" class="moduleBtn">+</button>
 
 			<div class="card-body">
@@ -42,7 +43,6 @@
 					<li th:text="${calendarEntries.startDateTime} + '  ' +  ${calendarEntries.description}"></li>
 				</ul>
 			</div>
-
 		</div>
 
 		<!-- █████ TO-DO █████████████████████████████████████████ -->
