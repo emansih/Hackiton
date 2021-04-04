@@ -55,6 +55,11 @@ body {
 	background-color: #E6E6E6;
 	box-shadow: 0 2px 5px #C7C7C7;
 	text-align: center;
+	background-image: url("###");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 100%;
 }
 
 .FocusTimer {
@@ -64,6 +69,12 @@ body {
 	background-color: #FFE8A7;
 	box-shadow: 0 2px 5px #F5C78C;
 	text-align: center;
+
+	background-image: url("###");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 100%;
 }
 
 
@@ -116,20 +127,23 @@ body {
 
 /* █████ WEATHER CONTENTS ███████████████████████████████████ */
 #weatherIcon {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 	width: 70px;
 	height: 70px;
+	/* background-color: white; */
+	border-radius: 50%;
+	border: 3px dotted white;
 }
 
 #temps {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 
 	width: 100%;
 	background-color: white;
 }
 
 #weatherTemp {
-	border: 5px solid green;
+	/* border: 5px solid green; */
 
 	text-align: left;
 	vertical-align: bottom;
@@ -137,7 +151,7 @@ body {
 }
 
 #weatherStatus {
-	border: 5px solid green;
+	/* border: 5px solid green; */
 
 	float: right;
 	text-align: right;
@@ -147,7 +161,7 @@ body {
 
 /* █████ CLOCK CONTENTS ███████████████████████████████████ */
 #clockwidgetcontainer {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 	text-align: center;
 }
 
@@ -163,11 +177,30 @@ body {
 }
 
 #clockwidgetCityName {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 	text-align: center;
 }
 
 /* █████ TO-DO CONTENTS ███████████████████████████████████ */
+/* checkbox {
+	width: 40px;
+	height: 40px;
+} */
 
+.todoTextbox {
+	/* position: absolute; */
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 100%;
+	border-radius: 15px;
+	border: none;
+	background-color: #EEE;
+	padding: 0px 10px 0px 10px;
+}
+
+.cornerAddBtn {
+	background-color: red;
+}
 
 /* █████ EVENTS CONTENTS ███████████████████████████████████ */
