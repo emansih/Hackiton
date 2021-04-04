@@ -4,6 +4,49 @@ body {
 	font-family: 'Kiwi Maru', serif;
 	padding: 20px 50px;
 }
+/* █████ STANDARD ELEMENTS ███████████████████████████████████ */
+
+.moduleBtn {
+	float: right;
+	padding: 10px;
+	width: 43px;
+	height: 43px;
+
+	font-size: 20px;
+	text-align: center;
+
+	background-color: white;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 0 2px 5px #C7C7C7;
+	color: black;
+
+	user-select: none;
+
+	transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.moduleBtn:hover {
+	transform: scale(1.2);
+}
+
+.moduleBtn:active {
+	transform: scale(0.8);
+	opacity: 50%;
+}
+
+.topmainbtn {
+	display: block;
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	top: 50px;
+	right: 50px;
+	margin: 10px;
+
+	/* border: 2px solid white; */
+	border-radius: 50%;
+	overflow: hidden;
+}
 
 
 /* █████ TOP BAR ███████████████████████████████████ */
@@ -33,21 +76,6 @@ body {
 }
 
 /* █████ TOP RIGHT BUTTONS ███████████████████████████████████ */
-
-.topmainbtn {
-	display: block;
-	position: fixed;
-	width: 80px;
-	height: 80px;
-	top: 50px;
-	right: 50px;
-	margin: 10px;
-
-	/* border: 2px solid white; */
-	border-radius: 50%;
-
-	overflow: hidden;
-}
 
 .Settings {
 
@@ -163,7 +191,7 @@ body {
 
 /* █████ WEATHER CONTENTS ███████████████████████████████████ */
 #weatherIcon {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 	width: 70px;
 	height: 70px;
 	/* background-color: white; */
@@ -172,14 +200,14 @@ body {
 }
 
 #temps {
-	border: 5px solid red;
+	/* border: 5px solid red; */
 
 	width: 100%;
 	background-color: none;
 }
 
 #weatherTemp {
-	border: 5px solid green;
+	/* border: 5px solid green; */
 
 	text-align: left;
 	vertical-align: bottom;
@@ -187,7 +215,7 @@ body {
 }
 
 #weatherStatus {
-	border: 5px solid green;
+	/* border: 5px solid green; */
 
 	/* float: right; */
 	text-align: right;
@@ -235,32 +263,83 @@ body {
 	padding: 0px 10px 0px 10px;
 }
 
-.moduleBtn {
-	float: right;
-	padding: 10px;
-	width: 43px;
-	height: 43px;
-
-	font-size: 20px;
-	text-align: center;
-
-	background-color: white;
-	border-radius: 50%;
-	border: none;
-	box-shadow: 0 2px 5px #C7C7C7;
-	color: black;
-
+/* █████ CHECKBOX █████*/
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 54px;
+	padding-top: 5px;
+	margin-bottom: 13px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
+}
 
+/* Hide the browser's default checkbox */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	background-color: rgba(255,255,255,0);
+	border: 3px solid #fff;
 	transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.moduleBtn:hover {
-	transform: scale(1.2);
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: rgba(255,255,255,1);
+	transform: scale(1.1);
 }
 
-.moduleBtn:active {
-	transform: scale(0.8);
-	opacity: 50%;
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	background-color: #AF51B2;
+    border: 3px solid rgba(255,255,255,0;);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+	/* transform: scale(1.5); */
+	opacity: 0;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+	/* transform: scale(1); */
+	opacity: 1;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+	left: 14px;
+	top: 8px;
+	width: 5px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 /* █████ EVENTS CONTENTS ███████████████████████████████████ */

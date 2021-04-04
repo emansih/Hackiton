@@ -54,9 +54,18 @@
 
 			<table class="table-unstyled" th:each="todoEntries: ${todoEntries}">
 				<tr>
-					<td>
-						<input type="checkbox" id="task1" name="task1">
+					<!-- <td>
+						<label class="container"><span class="checkmark"></span>
+							<input type="checkbox" checked="checked"  id="task1" name="task1">
+						</label>
+
 						<span th:text="${todoEntries.todoDescription}"></span>
+					</td> -->
+					<td>
+						<label class="container">	<span th:text="${todoEntries.todoDescription}"></span>
+							<input type="checkbox" checked="checked">
+							<span class="checkmark"></span>
+						</label>
 					</td>
 				</tr>
 			</table>
