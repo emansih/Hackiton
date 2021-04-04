@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
 	<meta charset="UTF-8">
 	<title>Dashboard</title>
 
@@ -54,9 +54,13 @@
 
 			<table class="table-unstyled" th:each="todoEntries: ${todoEntries}">
 				<tr>
-					<td>
-						<label class="container">	<span th:text="${todoEntries.todoDescription}"></span>
-							<input type="checkbox" th:id="${todoEntries.todoItemId}" onclick="checkTodo()" th:value="${todoEntries.todoItemId}" th:name="${todoEntries.todoItemId}">
+					<td th:switch="${todoEntries.done}">
+						<label class="container" >
+							<span th:text="${todoEntries.todoDescription}"></span>
+
+							<input type="checkbox" th:id="${todoEntries.todoItemId}" onclick="checkTodo()"
+								   th:value="${todoEntries.todoItemId}" th:name="${todoEntries.todoItemId}" th:checked="${todoEntries.done}" >
+
 							<span class="checkmark"></span>
 						</label>
 					</td>
