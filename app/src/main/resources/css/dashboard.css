@@ -288,8 +288,7 @@ h1 {
 	height: 40px;
 } */
 
-.todoTextbox {
-	/* position: absolute; */
+/* .todoTextbox {
 	top: 0;
 	left: 0;
 	height: 25px;
@@ -298,7 +297,7 @@ h1 {
 	border: none;
 	background-color: #EEE;
 	padding: 0px 10px 0px 10px;
-}
+} */
 
 /* █████ CHECKBOX █████*/
 /* The container */
