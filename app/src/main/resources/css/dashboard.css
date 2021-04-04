@@ -5,6 +5,10 @@ body {
 	/* padding: 20px 50px; */
 	min-width: 956px;
 }
+
+h1 {
+	margin-right: 100px;
+}
 /* █████ STANDARD ELEMENTS ███████████████████████████████████ */
 
 .moduleBtn {

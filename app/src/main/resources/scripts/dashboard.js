@@ -38,10 +38,15 @@ function localClock () {
 
 function worldclock () {
 	var timeZone = getCookie("timeZone")
-	var currentTime = new Date().toLocaleString("en-US",
-		{timeZone: timeZone, hour: '2-digit', minute:'2-digit', second: '2-digit'});
+
+	// var currentTime = new Date().toLocaleString("en-US",{timeZone: timeZone, hour: '2-digit', minute:'2-digit', second: '2-digit'});
+
+	var currentTime = new Date().toLocaleString("en-US",{timeZone: timeZone, hour: '2-digit', minute:'2-digit'});
+	var secondsAMPM = new Date().toLocaleString("en-US",{timeZone: timeZone, second: '2-digit'});
+
 	// Update the time display
     document.getElementById("worldclockwidget").firstChild.nodeValue = currentTime;
+		document.getElementById("AMPM").firstChild.nodeValue = secondsAMPM;
 }
 
 
