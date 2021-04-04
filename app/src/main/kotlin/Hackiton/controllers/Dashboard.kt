@@ -41,10 +41,10 @@ class Dashboard: Handler {
         db.collection("todo").listDocuments().forEach {  docRef ->
             val todoItems = docRef.get().get().toObject(TodoItems::class.java)
             if(todoItems?.userId != null && todoItems.userId.contentEquals(userId)){
-                if(!todoItems.isDone){
+                if(!todoItems.done){
                     todoArray.add(TodoItems(
                             userId, todoItems.todoItemId, todoItems.todoDescription,
-                            todoItems.todoDate, todoItems.isDone
+                            todoItems.todoDate, todoItems.done
                     ))
                 }
 

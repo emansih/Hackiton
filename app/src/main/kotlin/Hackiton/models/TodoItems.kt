@@ -5,5 +5,5 @@ data class TodoItems(
         val todoItemId: String = "",
         val todoDescription: String = "",
         val todoDate: String = "",
-        val isDone: Boolean = false
+        val done: Boolean = false
 )
