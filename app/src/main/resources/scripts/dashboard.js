@@ -51,16 +51,13 @@ function worldclock () {
 
 
 function checkTodo(){
-	var array = []
 	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-
 	for (var i = 0; i < checkboxes.length; i++) {
-		array.push(checkboxes[i].value)
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", 'https://hackiethon.hisname.xyz/marktodo/' + checkboxes[i].value, true);
+		xmlHttp.send(null);
 	}
-	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open("GET", 'https://hackiethon.hisname.xyz/marktodo/' + array[0], false );
-	xmlHttp.send(null);
-	window.location.reload(false);
+	//window.location.reload(false);
 }
 
 function changeTimeZone(){
