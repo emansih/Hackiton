@@ -68,5 +68,7 @@ function cookieTimeZone(){
 	if(getCookie("timeZone") != null){
 		document.getElementById("clockwidgetCityName").innerHTML = getCookie("timeZone")
 		document.getElementById("timezone").value = getCookie("timeZone")
+	} else {
+		setCookie("timeZone", "Asia/Taipei")
 	}
 }
