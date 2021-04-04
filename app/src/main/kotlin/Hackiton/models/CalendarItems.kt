@@ -1,6 +1,8 @@
 package Hackiton.models
 
 data class CalendarItems(
-        val description: String,
-        val startDateTime: String
+        val userId: String = "",
+        val calendarId: String = "",
+        val description: String = "",
+        val startDateTime: String = ""
 )

@@ -23,6 +23,7 @@ dependencies {
     implementation 'io.javalin:javalin:3.13.4'
     implementation 'org.slf4j:slf4j-simple:1.7.30'
     implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+    implementation 'com.google.firebase:firebase-admin:7.1.1'
 }
 
 application {
