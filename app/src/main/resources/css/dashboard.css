@@ -27,6 +27,8 @@ h1 {
 	box-shadow: 0 2px 5px #C7C7C7;
 	color: black;
 
+	margin-top: -60px;
+
 	user-select: none;
 
 	transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -172,6 +174,9 @@ h1 {
 .MainGrid {
 	/* border: 5px solid red; */
 	/* position: fixed; */
+
+	min-width: 956px;
+
 	bottom: 0%;
 	left: 0%;
 	margin: 50px;
@@ -379,3 +384,8 @@ h1 {
 }
 
 /* █████ EVENTS CONTENTS ███████████████████████████████████ */
+
+.list-group {
+	padding: 0px 0px 5px 0px;
+	font-size: 20px;
+}

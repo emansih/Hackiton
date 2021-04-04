@@ -33,13 +33,13 @@
 
 		<!-- █████ EVENTS CARD ███████████████████████████████████ -->
 		<div class="card Events">
-			<h2> Events </h2>
+			<h2> Events Today </h2>
 
 			<button onclick="location.href='/addEvent';" type="button" class="moduleBtn">+</button>
 
 			<div class="card-body">
-				<ul th:each="calendarEntries: ${calendarEntries}" class="list-group">
-					<li th:text="${calendarEntries.startDateTime} + '  ' +  ${calendarEntries.description}"></li>
+				<ul th:each="calendarEntries: ${calendarEntries}" class="list-group" style="list-style-type: none;">
+					<li th:text="${calendarEntries.startDateTime} + ' - ' +  ${calendarEntries.description}"></li>
 				</ul>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 		<!-- █████ TO-DO █████████████████████████████████████████ -->
 
 		<div class="card ToDoList">
-			<h2> Goals For Today </h2>
+			<h2> Today's Goals </h2>
 
 			<button onclick="location.href='/todo';" type="button" class="moduleBtn">+</button>
 
@@ -71,9 +71,10 @@
 		<div class="card Weather">
 			<!-- <img id="weatherIcon" th:src="${weatherIcon}" /> -->
 			<!-- <h2 id="temps"><span id="weatherTemp" th:text="${temp}"></span><br><span th:text="${weatherStatus}" id="weatherStatus"></span></h2> -->
-			
+
 			<img id="weatherIcon" />
-			<h2 id="temps"><span id="weatherTemp"></span><span id="weatherStatus"></span></h2>
+			<h2 id="temps"><span id="weatherTemp"></span><br>
+				<span id="weatherStatus"></span></h2>
 		</div>
 
 		<!-- █████ WORLD CLOCK ███████████████████████████████ -->

@@ -85,7 +85,7 @@
 </head>
 
 
-<body onload="updateClocks();"> <!-- Update Clock -->
+<body onload="updateClocks(); filldate();"> <!-- Update Clock -->
 
 	<!-- █████ TOP BAR █████████████████████████████████████████ -->
 	<div class="TopBar">
@@ -115,12 +115,20 @@
 	<!-- <input id="inputhours" type="number">Hours</input> -->
 	<!-- <input id="inputmins" type="number">Mins</input> -->
 
-	<input id="inputdate" type="text" value="Jan 1, 2021 08:30:00"></input>
+	<input id="inputdate" type="text" value="Jan 1, 2021 08:30"></input>
 	<button id="start" onclick="timer();">Start</button>
 	<button id="reset" onclick="window.location.reload();">Reset</button>
 
 
 	<script>
+
+	function filldate() {
+		var countDownDate = new Date(targetDate).getTime();
+
+		console.log("filldate" + countDownDate);
+
+		document.getElementById("inputdate").value = countDownDate
+	}
 
 	function timer() {
 
@@ -132,15 +140,11 @@
 		// var inputhours = document.getElementById("inputhours").value;
 		var inputhours = document.getElementById("inputdate").value;
 
-		// var targetDate
+		var targetDate =  inputhours + ":00"
 
-		// Set the date we're counting down to
-		// var targetDate = "Apr 4, 2023 15:37:00"
-		var targetDate = inputhours
+		document.getElementById("target").innerHTML = "counting down to: " + inputhours
 
 		var countDownDate = new Date(targetDate).getTime();
-
-		document.getElementById("target").innerHTML = "counting down to: " + targetDate
 
 		// Update the count down every 1 second
 		var x = setInterval(function() {
