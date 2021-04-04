@@ -1,7 +1,10 @@
 var auth = new firebaseui.auth.AuthUI(firebase.auth());
 auth.start('#auth-container', {
     signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
 });
 
@@ -18,6 +21,9 @@ var uiConfig = {
     signInSuccessUrl: 'dashboard',
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ]
 };
 auth.start('#auth-container', uiConfig);
