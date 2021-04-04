@@ -55,7 +55,7 @@
 			<table class="table-unstyled" th:each="todoEntries: ${todoEntries}">
 				<tr>
 					<td>
-						<input type="checkbox" id="task1" name="task1">
+						<input type="checkbox" th:id="${todoEntries.todoItemId}" onclick="checkTodo()" th:value="${todoEntries.todoItemId}" th:name="${todoEntries.todoItemId}">
 						<span th:text="${todoEntries.todoDescription}"></span>
 					</td>
 				</tr>

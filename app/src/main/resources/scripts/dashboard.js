@@ -77,3 +77,17 @@ function worldclock () {
 	document.getElementById("worldclockAMPM").firstChild.nodeValue = ampmOutput;
 	document.getElementById("clockwidgetCityName").innerHTML = cityNameOutput;
 }
+
+
+function checkTodo(){
+	var array = []
+	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+	for (var i = 0; i < checkboxes.length; i++) {
+		array.push(checkboxes[i].value)
+	}
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", 'http://localhost:8080/marktodo/' + array[0], false );
+	xmlHttp.send(null);
+	window.location.reload(false);
+}
