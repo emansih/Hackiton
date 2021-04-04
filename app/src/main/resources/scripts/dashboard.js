@@ -1,11 +1,9 @@
-function updateClocks () {
+function updateClocks() {
 	localClock(); setInterval('localClock()', 1000 );
 	worldclock(); setInterval('worldclock()', 1000 );
 }
 
-function localClock () {
-
-	// console.log("Clock Fired");
+function localClock() {
 
   var currentTime = new Date ( );
 
@@ -72,5 +70,49 @@ function cookieTimeZone(){
 		document.getElementById("timezone").value = getCookie("timeZone")
 	} else {
 		setCookie("timeZone", "Asia/Taipei")
+	}
+}
+
+function getUserLocation(){
+	var xhttp = new XMLHttpRequest();
+	if (navigator.geolocation) {
+		window.onload = function() {
+			var startPos;
+			var geoSuccess = function(position) {
+				startPos = position;
+				const lat = startPos.coords.latitude;
+				const longitude = startPos.coords.longitude;
+				xhttp.open('GET', 'https://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + lat + '&lon=' + longitude + '&appid=2d6333bd76970c4b1d16306b517f334c', true)
+				xhttp.onload = function () {
+					var data = JSON.parse(this.response)
+					document.getElementById("weatherTemp").innerHTML = data.main.temp + " °c"
+					document.getElementById("weatherStatus").innerHTML = data.weather[0].main
+					document.getElementById("weatherIcon").src = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+				}
+				xhttp.send()
+			};
+			var geoError = function(error) {
+				xhttp.open('GET', 'https://api.openweathermap.org/data/2.5/weather?units=metric&lat=-37.8092112&lon=144.96333400000003&appid=2d6333bd76970c4b1d16306b517f334c', true)
+				xhttp.onload = function () {
+					var data = JSON.parse(this.response)
+					document.getElementById("weatherTemp").innerHTML = data.main.temp + " °c"
+					document.getElementById("weatherStatus").innerHTML = data.weather[0].main
+					document.getElementById("weatherIcon").src = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+				}
+				xhttp.send()
+			};
+			navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+			updateClocks()
+		};
+	} else {
+		updateClocks()
+		xhttp.open('GET', 'https://api.openweathermap.org/data/2.5/weather?units=metric&lat=-37.8092112&lon=144.96333400000003&appid=2d6333bd76970c4b1d16306b517f334c', true)
+		xhttp.onload = function () {
+			var data = JSON.parse(this.response)
+			document.getElementById("weatherTemp").innerHTML = data.main.temp + " °c"
+			document.getElementById("weatherStatus").innerHTML = data.weather[0].main
+			document.getElementById("weatherIcon").src = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+		}
+		xhttp.send()
 	}
 }
