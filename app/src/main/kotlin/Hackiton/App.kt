@@ -16,6 +16,7 @@ fun main(args: Array<String>){
         obj.enableDevLogging()
         obj.addStaticFiles("/scripts", Location.CLASSPATH)
         obj.addStaticFiles("/css", Location.CLASSPATH)
+        obj.addStaticFiles("/images", Location.CLASSPATH)
     }.start(8080)
     val serviceAccount = Dashboard::class.java.getResourceAsStream("/credentials.json")
     val options = FirebaseOptions.Builder()

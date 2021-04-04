@@ -14,7 +14,6 @@ var uiConfig = {
             return true;
         },
         uiShown: function() {
-            document.getElementById('loading').style.display = 'none';
         }
     },
     signInFlow: 'popup',
