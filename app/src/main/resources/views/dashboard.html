@@ -2,17 +2,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
 	<meta charset="UTF-8">
 	<title>Dashboard</title>
-
+	<script src="/dashboard.js"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&amp;display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="/dashboard.css">
-	<script src="/dashboard.js"></script>
 	<script src="/cookies.js"></script>
 </head>
 
 
-<body onload="updateClocks();"> <!-- Update Clock -->
+<body>
 
 	<!-- █████ TOP BAR █████████████████████████████████████████ -->
 	<div class="TopBar">
@@ -70,8 +69,11 @@
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->
 		<div class="card Weather">
-			<img id="weatherIcon" th:src="${weatherIcon}" />
-			<h2 id="temps"><span id="weatherTemp" th:text="${temp}"></span><br><span th:text="${weatherStatus}" id="weatherStatus"></span></h2>
+			<!-- <img id="weatherIcon" th:src="${weatherIcon}" /> -->
+			<!-- <h2 id="temps"><span id="weatherTemp" th:text="${temp}"></span><br><span th:text="${weatherStatus}" id="weatherStatus"></span></h2> -->
+			
+			<img id="weatherIcon" />
+			<h2 id="temps"><span id="weatherTemp"></span><span id="weatherStatus"></span></h2>
 		</div>
 
 		<!-- █████ WORLD CLOCK ███████████████████████████████ -->
@@ -164,6 +166,7 @@
 		</div>
 		<script>
 			cookieTimeZone()
+			getUserLocation()
 		</script>
 	</div>
 
