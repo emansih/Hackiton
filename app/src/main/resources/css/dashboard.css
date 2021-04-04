@@ -2,7 +2,8 @@
 
 body {
 	font-family: 'Kiwi Maru', serif;
-	padding: 20px 50px;
+	/* padding: 20px 50px; */
+	min-width: 956px;
 }
 /* █████ STANDARD ELEMENTS ███████████████████████████████████ */
 
@@ -59,6 +60,7 @@ body {
 
 .TopBar {
 	/* background-color: rgba(0, 0, 0, 0.1); */
+	margin: 50px 50px 0px 50px;
 }
 
 #mainClock {
@@ -164,7 +166,7 @@ body {
 
 .MainGrid {
 	/* border: 5px solid red; */
-	position: fixed;
+	/* position: fixed; */
 	bottom: 0%;
 	left: 0%;
 	margin: 50px;
@@ -176,6 +178,7 @@ body {
 	grid-template-areas:
 		'event todo weather'
 		'event todo clock';
+	grid-template-columns: auto auto 30%;
 	grid-gap: 10px;
 	/* background-color: #2196F3; */
 }
