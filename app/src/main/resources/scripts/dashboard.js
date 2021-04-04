@@ -41,12 +41,12 @@ function worldclock () {
 
 	// var currentTime = new Date().toLocaleString("en-US",{timeZone: timeZone, hour: '2-digit', minute:'2-digit', second: '2-digit'});
 
-	var currentTime = new Date().toLocaleString("en-US",{hour: '2-digit', minute:'2-digit'});
-	var secondsAMPM = new Date().toLocaleString("en-US",{timeZone: timeZone, second: '2-digit'});
+	var currentTime = new Date().toLocaleString("en-US",{timeZone: timeZone, hour: '2-digit', minute:'2-digit'});
+	// var secondsAMPM = new Date().toLocaleString("en-US",{timeZone: timeZone, second: '2-digit'});
 
 	// Update the time display
     document.getElementById("worldclockwidget").firstChild.nodeValue = currentTime;
-		document.getElementById("AMPM2").firstChild.nodeValue = ":" + secondsAMPM;
+		// document.getElementById("AMPM2").firstChild.nodeValue = ":" + secondsAMPM;
 }
 
 

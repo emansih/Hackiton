@@ -3,7 +3,8 @@
 body {
 	font-family: 'Kiwi Maru', serif;
 	/* padding: 20px 50px; */
-	min-width: 956px;
+	/* min-width: 956px; */
+	background-color: #F5EFE7;
 }
 
 h1 {
