@@ -87,7 +87,7 @@ function checkTodo(){
 		array.push(checkboxes[i].value)
 	}
 	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open( "GET", 'http://localhost:8080/marktodo/' + array[0], false );
+	xmlHttp.open("GET", 'https://hackiethon.hisname.xyz/marktodo/' + array[0], false );
 	xmlHttp.send(null);
 	window.location.reload(false);
 }
