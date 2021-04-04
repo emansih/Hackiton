@@ -1,9 +1,13 @@
 package Hackiton.controllers
 
 import Hackiton.models.CalendarItems
+import Hackiton.service.WeatherService
 import com.google.firebase.cloud.FirestoreClient
 import io.javalin.http.Context
 import io.javalin.http.Handler
+import kotlinx.coroutines.runBlocking
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -13,6 +17,7 @@ import java.time.ZoneId
 class Dashboard: Handler {
 
     private val calendarArray = arrayListOf<CalendarItems>()
+    private val hashMap: HashMap<String, Any> = HashMap()
 
     override fun handle(ctx: Context) {
         val userId = ctx.cookie("userId") ?: ""
@@ -31,7 +36,6 @@ class Dashboard: Handler {
             }
         }
         val rnds = (1..10).random()
-        val hashMap: HashMap<String, Any> = HashMap()
         val localDate = LocalDate.now(ZoneId.of("Australia/Melbourne"))
         val parsedDate = localDate.dayOfMonth.toString() + " " + localDate.month + " " + localDate.year
         hashMap["date"] = parsedDate
@@ -39,10 +43,27 @@ class Dashboard: Handler {
             hashMap["quotes"] = docRef.get().get().get(rnds.toString()) as String
         }
         hashMap["calendarEntries"] = calendarArray
+        runBlocking {
+            getWeatherData()
+        }
         ctx.render("/views/dashboard.html", hashMap)
     }
 
 
+    private suspend fun getWeatherData(){
+        val weatherResponse = Retrofit.Builder()
+                .baseUrl("https://api.openweathermap.org/")
+                .addConverterFactory(MoshiConverterFactory.create())
+                .build()
+                .create(WeatherService::class.java)
+                .getWeather("2158177", "metric", "2d6333bd76970c4b1d16306b517f334c")
+        val body = weatherResponse.body()
+        if(body != null){
+            hashMap["temp"] = body.main.temp + " °c"
+            hashMap["weatherStatus"] = body.weather[0].main
+            hashMap["weatherIcon"] = "https://openweathermap.org/img/w/" + body.weather[0].icon + ".png"
+        }
+    }
 
     // TO Add
     /*

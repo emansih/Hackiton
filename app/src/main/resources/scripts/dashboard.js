@@ -1,6 +1,6 @@
 function updateClocks () {
-localClock(); setInterval('localClock()', 1000 );
-worldclock(); setInterval('worldclock()', 1000 );
+	localClock(); setInterval('localClock()', 1000 );
+	worldclock(); setInterval('worldclock()', 1000 );
 }
 
 function localClock () {
@@ -37,17 +37,13 @@ function localClock () {
 }
 
 function worldclock () {
-
-  var currentTime = new Date ( );
-
+	var currentTime = new Date ( );
 	var cityNameLabel = "Knowhere"  //EDIT THIS TO SET CITY MESSAGE
 	var offsetHours = -3; //EDIT THIS TO SET TIME OFFSET
 	var offsetMins = 0;	//EDIT THIS TO SET TIME OFFSET
-
-  var currentHours = currentTime.getHours ( );
-  var currentMinutes = currentTime.getMinutes ( );
-  var currentSeconds = currentTime.getSeconds ( );
-
+	var currentHours = currentTime.getHours ( );
+	var currentMinutes = currentTime.getMinutes ( );
+	var currentSeconds = currentTime.getSeconds ( );
 	currentHours = (currentHours + offsetHours);
 
   // Pad the minutes and seconds with leading zeros, if required

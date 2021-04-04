@@ -77,8 +77,8 @@
 
 		<!-- █████ WEATHER ███████████████████████████████████ -->
 		<div class="card Weather">
-			<div id="weatherIcon">icon</div>
-			<h2 id="temps"><span id="weatherTemp">##°c</span> <span id="weatherStatus">light rain</span></h2>
+			<img id="weatherIcon" th:src="${weatherIcon}" />
+			<h2 id="temps"><span id="weatherTemp" th:text="${temp}"></span> <span th:text="${weatherStatus}" id="weatherStatus"></span></h2>
 		</div>
 
 		<div class="card WorldClock">
