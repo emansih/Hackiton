@@ -16,7 +16,7 @@
 <body onload="updateClocks();"> <!-- Update Clock -->
 	<div class="TopBar">
 		<h1>
-			<span id="mainClock">--:--</span><span id="AMPM">:-- --</span> <span id="date">DayName, Month #</span><br>
+			<span id="mainClock">--:--</span><span id="AMPM">:-- --</span> <span id="date" th:text="${date}"></span><br>
 			<span id="inspoQuote" th:text="${quotes}"></span>
 		</h1>
 

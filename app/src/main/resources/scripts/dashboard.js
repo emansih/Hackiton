@@ -30,12 +30,10 @@ function localClock () {
 	var timeOutput = currentHours + ":" + currentMinutes;
 	// var timeOutput = currentHours + ":" + currentMinutes + ":" + currentSeconds;
 	var ampmOutput =  ":" + currentSeconds + " " + timeOfDay;
-	var dateOutput = "Date Not yet Coded!"
 
   // Update the time display
-  document.getElementById("mainClock").firstChild.nodeValue = timeOutput;
+    document.getElementById("mainClock").firstChild.nodeValue = timeOutput;
 	document.getElementById("AMPM").firstChild.nodeValue = ampmOutput;
-	document.getElementById("date").firstChild.nodeValue = dateOutput;
 }
 
 function worldclock () {

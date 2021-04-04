@@ -5,6 +5,7 @@ import com.google.firebase.cloud.FirestoreClient
 import io.javalin.http.Context
 import io.javalin.http.Handler
 import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 
@@ -31,7 +32,9 @@ class Dashboard: Handler {
         }
         val rnds = (1..10).random()
         val hashMap: HashMap<String, Any> = HashMap()
-        
+        val localDate = LocalDate.now(ZoneId.of("Australia/Melbourne"))
+        val parsedDate = localDate.dayOfMonth.toString() + " " + localDate.month + " " + localDate.year
+        hashMap["date"] = parsedDate
         db.collection("quotes").listDocuments().forEach {  docRef ->
             hashMap["quotes"] = docRef.get().get().get(rnds.toString()) as String
         }
